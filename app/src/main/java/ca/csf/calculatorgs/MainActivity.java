@@ -19,10 +19,14 @@ public class MainActivity extends ActionBarActivity  {
 	Button buttonPlus, buttonMinus, buttonMultiply, buttonDivide,
 		   buttonModulo, buttonReset, buttonPoint, buttonNeg,
 		   buttonFnc;
+
+    Button buttonSin, buttonCos, buttonTan;
 	
 	String equation="";
 	Vibrator vibrator;
 	Calculator calculateur;
+
+    AppConstants.OperationType operationType = AppConstants.OperationType.BASIC;
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +55,11 @@ public class MainActivity extends ActionBarActivity  {
 		buttonPoint=(Button)findViewById(R.id.buttonPoint);
 		buttonNeg=(Button)findViewById(R.id.buttonNeg);
 		buttonFnc=(Button)findViewById(R.id.buttonFn);
-		
+
+        buttonSin = (Button)findViewById(R.id.buttonSin);
+        buttonCos = (Button)findViewById(R.id.buttonCos);
+        buttonTan = (Button)findViewById(R.id.buttonTang);
+
         editText=(EditText)findViewById(R.id.editText1);  
         edittext2=(EditText)findViewById(R.id.editText2);  
         
@@ -66,6 +74,14 @@ public class MainActivity extends ActionBarActivity  {
     	equation=equation+val;
         edittext2.setText(equation);
     }
+
+    public void addString(String string) {
+        vibrator.vibrate(30);
+        equation=equation+string;
+        edittext2.setText(equation);
+    }
+
+
     public void onClickListenerFnc(View v){
     }  
      
@@ -156,5 +172,20 @@ public class MainActivity extends ActionBarActivity  {
         double res = calculateur.getResultat();
         String total2 = String.valueOf(res);
         editText.setText(total2);
+    }
+
+    public void onClickListenerSin(View v){
+        equation = "";
+        addString(AppConstants.SIN_TRIGO);
+    }
+
+    public void onClickListenerCos(View v){
+        equation = "";
+        addString(AppConstants.COS_TRIGO);
+    }
+
+    public void onClickListenerTan(View v){
+        equation = "";
+        addString(AppConstants.TAN_TRIGO);
     }
 }

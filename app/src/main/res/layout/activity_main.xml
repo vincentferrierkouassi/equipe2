@@ -273,6 +273,43 @@
             android:textColor="@color/White"
             android:textSize="15dp" />
     </LinearLayout>
-    
-    
+
+    <LinearLayout
+        android:id="@+id/linearLayoutTrigo"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/buttonSin"
+            style="@style/ButtonText"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:onClick="onClickListenerSin"
+            android:text="Sin"
+            android:textColor="@color/White" />
+
+        <Button
+            android:id="@+id/buttonCos"
+            style="@style/ButtonText"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:onClick="onClickListenerCos"
+            android:text="Cos"
+            android:textColor="@color/White" />
+
+        <Button
+            android:id="@+id/buttonTang"
+            style="@style/ButtonText"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:onClick="onClickListenerTan"
+            android:text="Tan"
+            android:textColor="@color/White" />
+
+    </LinearLayout>
+
 </LinearLayout>

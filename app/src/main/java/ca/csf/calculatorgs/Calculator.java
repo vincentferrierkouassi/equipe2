@@ -29,10 +29,16 @@ public class Calculator {
 	
 	public void calculer() throws Exception {
 		try {
-			Vector<StringBuffer> sousEquations = isolerSousEquations();
-			resultat = joindreSousResultats(sousEquations);
+
+            if (isTrigo(getEquation())) {
+                resultat = CalculatorTrigo.calculer(getEquation());
+            } else {
+                Vector<StringBuffer> sousEquations = isolerSousEquations();
+                resultat = joindreSousResultats(sousEquations);
+            }
+
 		} catch(NumberFormatException e) {
-			throw(new Exception("Caractère(s) invalide(s)"));
+			throw(new Exception("Caractï¿½re(s) invalide(s)"));
 		}
 	}
 	
@@ -75,7 +81,7 @@ public class Calculator {
 		if(bufferSousEquationEnCours.length() != 0 && sousEquations.size() == 0) {
 			sousEquations.add(bufferSousEquationEnCours);
 		}
-		if(sousEquations.size() == 0) { throw(new Exception("Aucune équation!")); }
+		if(sousEquations.size() == 0) { throw(new Exception("Aucune ï¿½quation!")); }
 		return sousEquations;
 	}
 	
@@ -93,7 +99,7 @@ public class Calculator {
 					break;
 				}
 			} while(true);
-			if(bufferSousEquationEnCours.length() == 0) { throw(new Exception("Couple de paranthèses vide!")); }
+			if(bufferSousEquationEnCours.length() == 0) { throw(new Exception("Couple de paranthï¿½ses vide!")); }
 			Vector<String> operations = separerOperationsDeSousEquation(bufferSousEquationEnCours);
 			calculerOperation(operations);
 			sousEquations.setElementAt(new StringBuffer(operations.get(0)),I);
@@ -122,7 +128,7 @@ public class Calculator {
 					double testInfinity = java.lang.Double.valueOf(operations.get(I-1))/java.lang.Double.valueOf(operations.get(I+1));
 					if(java.lang.Double.toString(testInfinity).equals("Infinity")) {
 						testInfinity = 0;
-						throw(new Exception("Division par zéro!"));
+						throw(new Exception("Division par zï¿½ro!"));
 					}
 					operations.setElementAt(java.lang.Double.toString(testInfinity), I);
 					operations.remove(I - 1);
@@ -136,7 +142,7 @@ public class Calculator {
 					double testInfinity = java.lang.Double.valueOf(operations.get(I-1)) % java.lang.Double.valueOf(operations.get(I+1));
 					if(java.lang.Double.toString(testInfinity).equals("Infinity")) {
 						testInfinity = 0;
-						throw(new Exception("Division par zéro!"));
+						throw(new Exception("Division par zï¿½ro!"));
 					}
 					operations.setElementAt(java.lang.Double.toString(testInfinity), I);
 					operations.remove(I - 1);
@@ -224,7 +230,7 @@ public class Calculator {
 			case '^': {
 				if(etaitOperateur) {
 					etaitOperateur = false;
-					if(caractereEnCours != '-') { throw new Exception("Répétition d'opérateurs!"); }
+					if(caractereEnCours != '-') { throw new Exception("Rï¿½pï¿½tition d'opï¿½rateurs!"); }
 					operationEnCours.append('-');
 				} else {
 					if(sousEquation.charAt(I -1) == '[' || sousEquation.charAt(I -1) == 'E') {
@@ -262,5 +268,16 @@ public class Calculator {
 			}
 		} while(true);
 	}
+
+    private boolean isTrigo(String equation) {
+        boolean isTrigo = false;
+        if (equation.contains(AppConstants.SIN_TRIGO)
+                || equation.contains(AppConstants.COS_TRIGO)
+                || equation.contains(AppConstants.TAN_TRIGO)) {
+            isTrigo = true;
+        }
+
+        return  isTrigo;
+    }
 	
 }
