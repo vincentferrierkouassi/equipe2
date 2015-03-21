@@ -203,7 +203,7 @@ public class Calculator {
 			}
 			case 7: {
 				if(caractereEnCours == '%') {
-					operations.setElementAt(Integer.toString(java.lang.Integer.valueOf(operations.get(I-1)) ^ ((int)java.lang.Integer.valueOf(operations.get(I+1)))), I);
+					operations.setElementAt(Integer.toString(java.lang.Integer.valueOf(operations.get(I-1)) % ((int)java.lang.Integer.valueOf(operations.get(I+1)))), I);
 					operations.remove(I - 1);
 					operations.remove(I);
 					I = 0;
