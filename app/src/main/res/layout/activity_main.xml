@@ -220,7 +220,7 @@
                     android:layout_height="fill_parent"
                     android:layout_weight="1"
                     android:onClick="onClickListenerEqual"
-                    android:text="EXE"
+                    android:text="="
                     android:textColor="@color/White" />
 
                 <Button
