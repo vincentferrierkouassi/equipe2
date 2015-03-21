@@ -6,8 +6,9 @@ public class Calculator {
 
 	private String equation;
 	private double resultat;
-	
-	public Calculator() {
+    private boolean isRadianTrigo = false;
+
+    public Calculator() {
 		super();
 	}
 	
@@ -22,8 +23,16 @@ public class Calculator {
 	public double getResultat() {
 		return resultat;
 	}
-	
-	public String toString() {
+
+    public boolean isRadianTrigo() {
+        return isRadianTrigo;
+    }
+
+    public void setRadianTrigo(boolean isRadianTrigo) {
+        this.isRadianTrigo = isRadianTrigo;
+    }
+
+    public String toString() {
 		return java.lang.Double.toString(resultat);
 	}
 	
@@ -31,7 +40,10 @@ public class Calculator {
 		try {
 
             if (isTrigo(getEquation())) {
+                CalculatorTrigo.isRadianTrigo = isRadianTrigo();
                 resultat = CalculatorTrigo.calculer(getEquation());
+            } else if (isLog(getEquation())) {
+                resultat = CalculatorLog.calculer(getEquation());
             } else {
                 Vector<StringBuffer> sousEquations = isolerSousEquations();
                 resultat = joindreSousResultats(sousEquations);
@@ -279,5 +291,16 @@ public class Calculator {
 
         return  isTrigo;
     }
-	
+
+    private boolean isLog(String equation) {
+        boolean isLog = false;
+        if (equation.contains(AppConstants.LOG)
+                || equation.contains(AppConstants.LOG10)) {
+            isLog = true;
+        }
+
+        return  isLog;
+    }
+
+
 }

@@ -21,10 +21,14 @@ public class MainActivity extends ActionBarActivity  {
 		   buttonFnc;
 
     Button buttonSin, buttonCos, buttonTan;
-	
+
+    Button buttonLog, buttonLog10;
+
 	String equation="";
 	Vibrator vibrator;
 	Calculator calculateur;
+
+    private boolean isRadianTrigo = false;
 
     AppConstants.OperationType operationType = AppConstants.OperationType.BASIC;
 	
@@ -59,6 +63,9 @@ public class MainActivity extends ActionBarActivity  {
         buttonSin = (Button)findViewById(R.id.buttonSin);
         buttonCos = (Button)findViewById(R.id.buttonCos);
         buttonTan = (Button)findViewById(R.id.buttonTang);
+
+        buttonLog = (Button)findViewById(R.id.buttonLog);
+        buttonLog10 = (Button)findViewById(R.id.buttonLog10);
 
         editText=(EditText)findViewById(R.id.editText1);  
         edittext2=(EditText)findViewById(R.id.editText2);  
@@ -164,6 +171,7 @@ public class MainActivity extends ActionBarActivity  {
         vibrator.vibrate(30);
  
         calculateur.setEquation(equation);
+        calculateur.setRadianTrigo(isRadianTrigo);
 		try {
 			calculateur.calculer();
 		} catch (Exception e) {
@@ -187,5 +195,26 @@ public class MainActivity extends ActionBarActivity  {
     public void onClickListenerTan(View v){
         equation = "";
         addString(AppConstants.TAN_TRIGO);
+    }
+
+    public void onClickListenerDegreeRadian(View v){
+
+        if (((Button)v).getText().equals(getString(R.string.degree))) {
+            ((Button)v).setText(getString(R.string.radian));
+            isRadianTrigo = true;
+        } else {
+            ((Button)v).setText(getString(R.string.degree));
+            isRadianTrigo = false;
+        }
+    }
+
+    public void onClickListenerLog(View v){
+        equation = "";
+        addString(AppConstants.LOG);
+    }
+
+    public void onClickListenerLog10(View v){
+        equation = "";
+        addString(AppConstants.LOG10);
     }
 }

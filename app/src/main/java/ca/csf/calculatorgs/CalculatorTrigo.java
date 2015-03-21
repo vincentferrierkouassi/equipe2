@@ -5,6 +5,8 @@ package ca.csf.calculatorgs;
  */
 public class CalculatorTrigo {
 
+    public static boolean isRadianTrigo = false;
+
     public static double calculer(String equation) throws Exception {
 
         String[] equations = equation.split(" ");
@@ -27,16 +29,19 @@ public class CalculatorTrigo {
         return 0;
     }
 
-    public static double sin(double degree) {
-        return Math.sin(CalculatorTrigo.enRadians(degree));
+    public static double sin(double valeur) {
+        double val = (CalculatorTrigo.isRadianTrigo)?valeur:CalculatorTrigo.enRadians(valeur);
+        return Math.sin(val);
     }
 
-    public static double cos(double degree) {
-        return Math.cos(CalculatorTrigo.enRadians(degree));
+    public static double cos(double valeur) {
+        double val = (CalculatorTrigo.isRadianTrigo)?valeur:CalculatorTrigo.enRadians(valeur);
+        return Math.cos(val);
     }
 
-    public static double tan(double degree) {
-        return Math.tan(CalculatorTrigo.enRadians(degree));
+    public static double tan(double valeur) {
+        double val = (CalculatorTrigo.isRadianTrigo)?valeur:CalculatorTrigo.enRadians(valeur);
+        return Math.tan(val);
     }
 
     private static double enRadians(double degree) {

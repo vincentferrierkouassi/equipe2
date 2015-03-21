@@ -4,4 +4,11 @@
     <string name="app_name">CalculatorGS</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+
+    <string name="degree">Deg</string>
+    <string name="radian">Rad</string>
+
+
+
+
  </resources>
