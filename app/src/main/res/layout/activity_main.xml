@@ -344,7 +344,7 @@
                     android:layout_height="fill_parent"
                     android:layout_weight="1"
                     android:onClick="onClickListenerLog"
-                    android:text="Log"
+                    android:text="Ln"
                     android:textColor="@color/White" />
 
                 <Button
@@ -354,7 +354,7 @@
                     android:layout_height="fill_parent"
                     android:layout_weight="1"
                     android:onClick="onClickListenerLog10"
-                    android:text="Log10"
+                    android:text="Log"
                     android:textColor="@color/White" />
 
             </LinearLayout>
