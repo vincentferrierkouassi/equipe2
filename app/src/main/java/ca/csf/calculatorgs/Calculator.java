@@ -128,7 +128,7 @@ public class Calculator {
 			switch(etapeOperateur) {
 			case 0: {
 				if(caractereEnCours == '^') {
-					operations.setElementAt(java.lang.Double.toString(Math.pow(java.lang.Double.valueOf(operations.get(I-1)),java.lang.Double.valueOf(operations.get(I+1)))), I);
+					operations.setElementAt(BigDecimalCalculator.pow(operations.get(I-1),operations.get(I+1)), I);
 					operations.remove(I - 1);
 					operations.remove(I);
 					I = 0;
@@ -137,7 +137,7 @@ public class Calculator {
 			}
 			case 1: {
 				if(caractereEnCours == '/') {
-					double testInfinity = java.lang.Double.valueOf(operations.get(I-1))/java.lang.Double.valueOf(operations.get(I+1));
+					double testInfinity = java.lang.Double.valueOf(BigDecimalCalculator.divide(operations.get(I-1), operations.get(I+1)));
 					if(java.lang.Double.toString(testInfinity).equals("Infinity")) {
 						testInfinity = 0;
 						throw(new Exception("Division par z�ro!"));
@@ -151,7 +151,7 @@ public class Calculator {
 			}
 			case 2: {
 				if(caractereEnCours == '\\') {
-					double testInfinity = java.lang.Double.valueOf(operations.get(I-1)) % java.lang.Double.valueOf(operations.get(I+1));
+					double testInfinity = java.lang.Double.valueOf(BigDecimalCalculator.modulo(operations.get(I-1), operations.get(I+1)));
 					if(java.lang.Double.toString(testInfinity).equals("Infinity")) {
 						testInfinity = 0;
 						throw(new Exception("Division par z�ro!"));
@@ -165,7 +165,7 @@ public class Calculator {
 			}
 			case 3: {
 				if(caractereEnCours == '*') {
-					operations.setElementAt(java.lang.Double.toString(java.lang.Double.valueOf(operations.get(I-1))*java.lang.Double.valueOf(operations.get(I+1))), I);
+					operations.setElementAt(BigDecimalCalculator.multiply(operations.get(I-1), operations.get(I+1)), I);
 					operations.remove(I - 1);
 					operations.remove(I);
 					I = 0;
@@ -175,7 +175,7 @@ public class Calculator {
 			case 4: {
 				if(caractereEnCours == '-') {
 					if(operations.get(I).length() == 1) {
-						operations.setElementAt(java.lang.Double.toString(java.lang.Double.valueOf(operations.get(I-1))-java.lang.Double.valueOf(operations.get(I+1))), I);
+						operations.setElementAt(BigDecimalCalculator.subtract(operations.get(I-1), operations.get(I+1)), I);
 						operations.remove(I - 1);
 						operations.remove(I);
 					I = 0;
@@ -185,7 +185,7 @@ public class Calculator {
 			}
 			case 5: {
 				if(caractereEnCours == '+') {
-					operations.setElementAt(java.lang.Double.toString(java.lang.Double.valueOf(operations.get(I-1))+java.lang.Double.valueOf(operations.get(I+1))), I);
+					operations.setElementAt(BigDecimalCalculator.add(operations.get(I-1), operations.get(I+1)), I);
 					operations.remove(I - 1);
 					operations.remove(I);
 					I = 0;
