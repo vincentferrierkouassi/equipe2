@@ -5,7 +5,7 @@ package ca.csf.calculatorgs;
  */
 public class CalculatorLog {
 
-    public static double calculer(String equation) throws Exception {
+    public static double calculate(String equation) throws Exception {
 
         String[] equations = equation.split(" ");
 
@@ -26,12 +26,12 @@ public class CalculatorLog {
     }
 
 
-    public static double log(double valeur) {
-        return Math.log(valeur);
+    public static double log(double value) {
+        return Math.log(value);
     }
 
-    public static double log10(double valeur) {
-        return Math.log10(valeur);
+    public static double log10(double value) {
+        return Math.log10(value);
     }
 
 

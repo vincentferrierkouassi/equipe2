@@ -7,7 +7,6 @@ import android.os.Vibrator;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import ca.csf.calculatorgs.Calculator;
 
 public class MainActivity extends ActionBarActivity  {
 	
@@ -171,13 +170,13 @@ public class MainActivity extends ActionBarActivity  {
         vibrator.vibrate(30);
  
         calculateur.setEquation(equation);
-        calculateur.setRadianTrigo(isRadianTrigo);
+        calculateur.setRadianTrigonometric(isRadianTrigo);
 		try {
-			calculateur.calculer();
+			calculateur.calculate();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}     
-        double res = calculateur.getResultat();
+        double res = calculateur.getResult();
         String total2 = String.valueOf(res);
         editText.setText(total2);
     }
